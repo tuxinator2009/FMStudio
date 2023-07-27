@@ -1,0 +1,3131 @@
+{
+    "instruments": [
+        {
+            "algorithm": 8,
+            "attack": 0,
+            "decay": 70,
+            "feedback": 50,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Bass",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 70,
+                    "detune": 50,
+                    "level": 75,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 25,
+                    "decay": 55,
+                    "detune": 54,
+                    "level": 62,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 70,
+                    "detune": 50,
+                    "level": 75,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 60,
+                    "detune": 50,
+                    "level": 20,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                }
+            ],
+            "release": 35,
+            "sustain": 0,
+            "volume": 80
+        },
+        {
+            "algorithm": 3,
+            "attack": 0,
+            "decay": 75,
+            "feedback": 50,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Piano",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 70,
+                    "detune": 50,
+                    "level": 71,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 70,
+                    "detune": 57,
+                    "level": 23,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 70,
+                    "detune": 51,
+                    "level": 20,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 5,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 50,
+                    "detune": 50,
+                    "level": 40,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                }
+            ],
+            "release": 60,
+            "sustain": 100,
+            "volume": 80
+        },
+        {
+            "algorithm": 3,
+            "attack": 0,
+            "decay": 80,
+            "feedback": 50,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Echo",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 45,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": true,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 80,
+                    "detune": 50,
+                    "level": 30,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 2,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                }
+            ],
+            "release": 50,
+            "sustain": 0,
+            "volume": 80
+        },
+        {
+            "algorithm": 6,
+            "attack": 40,
+            "decay": 0,
+            "feedback": 50,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Violin",
+            "op": [
+                {
+                    "attack": 50,
+                    "decay": 60,
+                    "detune": 53,
+                    "level": 71,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 40,
+                    "decay": 70,
+                    "detune": 50,
+                    "level": 71,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 80
+                },
+                {
+                    "attack": 25,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 40,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 3,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 25,
+                    "decay": 65,
+                    "detune": 51,
+                    "level": 30,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 70
+                }
+            ],
+            "release": 40,
+            "sustain": 100,
+            "volume": 80
+        },
+        {
+            "algorithm": 8,
+            "attack": 30,
+            "decay": 0,
+            "feedback": 73,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Trumpet",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 71,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 40,
+                    "decay": 50,
+                    "detune": 55,
+                    "level": 52,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 75
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 57,
+                    "level": 71,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 35,
+                    "decay": 50,
+                    "detune": 53,
+                    "level": 44,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 75
+                }
+            ],
+            "release": 40,
+            "sustain": 100,
+            "volume": 100
+        },
+        {
+            "algorithm": 8,
+            "attack": 0,
+            "decay": 75,
+            "feedback": 57,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "E.Piano",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 70,
+                    "detune": 50,
+                    "level": 71,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 50,
+                    "detune": 50,
+                    "level": 10,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 14,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 75,
+                    "detune": 43,
+                    "level": 71,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 75,
+                    "detune": 57,
+                    "level": 35,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                }
+            ],
+            "release": 50,
+            "sustain": 0,
+            "volume": 80
+        },
+        {
+            "algorithm": 5,
+            "attack": 5,
+            "decay": 70,
+            "feedback": 50,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Celesta",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 70,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 50,
+                    "detune": 70,
+                    "level": 5,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 15,
+                    "detune": 50,
+                    "level": 20,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 12,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                }
+            ],
+            "release": 55,
+            "sustain": 0,
+            "volume": 80
+        },
+        {
+            "algorithm": 8,
+            "attack": 0,
+            "decay": 50,
+            "feedback": 50,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Cowbell",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 30,
+                    "detune": 50,
+                    "level": 71,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 13,
+                        "fine": 74,
+                        "fixed": true
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 25,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 13,
+                        "fine": 7,
+                        "fixed": true
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 50,
+                    "detune": 50,
+                    "level": 71,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 11,
+                        "fine": 87,
+                        "fixed": true
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 20,
+                    "detune": 50,
+                    "level": 13,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 14,
+                        "fine": 14,
+                        "fixed": true
+                    },
+                    "sustain": 25
+                }
+            ],
+            "release": 40,
+            "sustain": 0,
+            "volume": 80
+        },
+        {
+            "algorithm": 2,
+            "attack": 35,
+            "decay": 0,
+            "feedback": 50,
+            "glide": 40,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Didgeridoo",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 9,
+                        "fine": 27,
+                        "fixed": true
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 55,
+                    "detune": 50,
+                    "level": 25,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 10,
+                        "fine": 93,
+                        "fixed": true
+                    },
+                    "sustain": 75
+                },
+                {
+                    "attack": 50,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 50,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                }
+            ],
+            "release": 55,
+            "sustain": 100,
+            "volume": 80
+        },
+        {
+            "algorithm": 8,
+            "attack": 0,
+            "decay": 0,
+            "feedback": 32,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Dist.Guitar",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 71,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 60,
+                    "detune": 51,
+                    "level": 85,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 70
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 71,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 65,
+                    "detune": 51,
+                    "level": 75,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 60
+                }
+            ],
+            "release": 45,
+            "sustain": 100,
+            "volume": 80
+        },
+        {
+            "algorithm": 7,
+            "attack": 0,
+            "decay": 85,
+            "feedback": 50,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Gong",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 85,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 85,
+                    "detune": 50,
+                    "level": 28,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 80,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 75,
+                    "decay": 80,
+                    "detune": 50,
+                    "level": 28,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 75,
+                        "fixed": false
+                    },
+                    "sustain": 25
+                },
+                {
+                    "attack": 75,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 40,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 40,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                }
+            ],
+            "release": 50,
+            "sustain": 0,
+            "volume": 80
+        },
+        {
+            "algorithm": 6,
+            "attack": 0,
+            "decay": 70,
+            "feedback": 50,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Guitar",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 8,
+                    "decay": 55,
+                    "detune": 50,
+                    "level": 90,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 2,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 50,
+                    "detune": 50,
+                    "level": 25,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 85
+                },
+                {
+                    "attack": 0,
+                    "decay": 40,
+                    "detune": 50,
+                    "level": 53,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 5,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                }
+            ],
+            "release": 60,
+            "sustain": 0,
+            "volume": 80
+        },
+        {
+            "algorithm": 10,
+            "attack": 20,
+            "decay": 0,
+            "feedback": 100,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Noise",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 9,
+                        "fine": 72,
+                        "fixed": true
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 15,
+                        "fine": 0,
+                        "fixed": true
+                    },
+                    "sustain": 100
+                }
+            ],
+            "release": 40,
+            "sustain": 100,
+            "volume": 80
+        },
+        {
+            "algorithm": 8,
+            "attack": 0,
+            "decay": 0,
+            "feedback": 50,
+            "glide": 0,
+            "lfo": {
+                "attack": 65,
+                "pmd": 3,
+                "speed": 35
+            },
+            "name": "Organ",
+            "op": [
+                {
+                    "attack": 20,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 77,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 25,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 57,
+                    "level": 28,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 25,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 30,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 60,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 45,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 20,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 4,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                }
+            ],
+            "release": 50,
+            "sustain": 100,
+            "volume": 80
+        },
+        {
+            "algorithm": 11,
+            "attack": 20,
+            "decay": 0,
+            "feedback": 77,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Saw",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                }
+            ],
+            "release": 40,
+            "sustain": 100,
+            "volume": 80
+        },
+        {
+            "algorithm": 1,
+            "attack": 20,
+            "decay": 0,
+            "feedback": 50,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Sine",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                }
+            ],
+            "release": 40,
+            "sustain": 100,
+            "volume": 80
+        },
+        {
+            "algorithm": 10,
+            "attack": 20,
+            "decay": 0,
+            "feedback": 50,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Square",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 25,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 2,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                }
+            ],
+            "release": 40,
+            "sustain": 100,
+            "volume": 80
+        },
+        {
+            "algorithm": 4,
+            "attack": 0,
+            "decay": 0,
+            "feedback": 77,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Sweep",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 38,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": true,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 65,
+                    "decay": 65,
+                    "detune": 50,
+                    "level": 70,
+                    "loop": true,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 65,
+                    "decay": 65,
+                    "detune": 50,
+                    "level": 80,
+                    "loop": true,
+                    "pitch": {
+                        "coarse": 2,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                }
+            ],
+            "release": 50,
+            "sustain": 100,
+            "volume": 80
+        },
+        {
+            "algorithm": 1,
+            "attack": 40,
+            "decay": 0,
+            "feedback": 50,
+            "glide": 45,
+            "lfo": {
+                "attack": 60,
+                "pmd": 5,
+                "speed": 70
+            },
+            "name": "Theremin",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 51,
+                    "level": 20,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 0,
+                    "detune": 50,
+                    "level": 0,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                }
+            ],
+            "release": 60,
+            "sustain": 100,
+            "volume": 80
+        },
+        {
+            "algorithm": 8,
+            "attack": 0,
+            "decay": 0,
+            "feedback": 50,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Kick",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 30,
+                    "detune": 0,
+                    "level": 80,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 10,
+                    "detune": 0,
+                    "level": 80,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 12,
+                        "fine": 45,
+                        "fixed": true
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 50,
+                    "detune": 0,
+                    "level": 80,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 5,
+                    "detune": 0,
+                    "level": 80,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 25
+                }
+            ],
+            "release": 50,
+            "sustain": 100,
+            "volume": 80
+        },
+        {
+            "algorithm": 6,
+            "attack": 0,
+            "decay": 0,
+            "feedback": 50,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Snare",
+            "op": [
+                {
+                    "attack": 5,
+                    "decay": 30,
+                    "detune": 0,
+                    "level": 80,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 29,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 1,
+                    "decay": 40,
+                    "detune": 0,
+                    "level": 70,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 5,
+                    "decay": 0,
+                    "detune": 0,
+                    "level": 75,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 2,
+                        "fine": 60,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 10,
+                    "decay": 0,
+                    "detune": 0,
+                    "level": 60,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 5,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                }
+            ],
+            "release": 50,
+            "sustain": 100,
+            "volume": 80
+        },
+        {
+            "algorithm": 8,
+            "attack": 0,
+            "decay": 70,
+            "feedback": 50,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Heavy Bass",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 70,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 55,
+                    "detune": 50,
+                    "level": 62,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 70,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 0,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                },
+                {
+                    "attack": 0,
+                    "decay": 60,
+                    "detune": 50,
+                    "level": 50,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 50,
+                        "fixed": false
+                    },
+                    "sustain": 100
+                }
+            ],
+            "release": 35,
+            "sustain": 0,
+            "volume": 80
+        },
+        {
+            "algorithm": 8,
+            "attack": 0,
+            "decay": 25,
+            "feedback": 50,
+            "glide": 0,
+            "lfo": {
+                "attack": 0,
+                "pmd": 0,
+                "speed": 0
+            },
+            "name": "Xylophone",
+            "op": [
+                {
+                    "attack": 0,
+                    "decay": 100,
+                    "detune": 50,
+                    "level": 80,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 1,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 49,
+                    "decay": 100,
+                    "detune": 50,
+                    "level": 80,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 3,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 0,
+                    "decay": 100,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 5,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                },
+                {
+                    "attack": 50,
+                    "decay": 100,
+                    "detune": 50,
+                    "level": 100,
+                    "loop": false,
+                    "pitch": {
+                        "coarse": 7,
+                        "fine": 0,
+                        "fixed": false
+                    },
+                    "sustain": 0
+                }
+            ],
+            "release": 100,
+            "sustain": 0,
+            "volume": 80
+        }
+    ],
+    "name": "Experiments",
+    "overlapPolicy": "highlight",
+    "showKeyNames": "allNotes",
+    "songs": [
+        {
+            "name": "Battle",
+            "patterns": [
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Intro Melody",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            72,
+                            7,
+                            127
+                        ],
+                        [
+                            8,
+                            71,
+                            7,
+                            127
+                        ],
+                        [
+                            16,
+                            69,
+                            7,
+                            127
+                        ],
+                        [
+                            24,
+                            67,
+                            7,
+                            127
+                        ],
+                        [
+                            32,
+                            71,
+                            7,
+                            127
+                        ],
+                        [
+                            40,
+                            69,
+                            7,
+                            127
+                        ],
+                        [
+                            48,
+                            67,
+                            7,
+                            127
+                        ],
+                        [
+                            56,
+                            65,
+                            7,
+                            127
+                        ],
+                        [
+                            64,
+                            69,
+                            7,
+                            127
+                        ],
+                        [
+                            72,
+                            67,
+                            7,
+                            127
+                        ],
+                        [
+                            80,
+                            65,
+                            7,
+                            127
+                        ],
+                        [
+                            88,
+                            64,
+                            7,
+                            127
+                        ],
+                        [
+                            96,
+                            67,
+                            7,
+                            127
+                        ],
+                        [
+                            104,
+                            65,
+                            7,
+                            127
+                        ],
+                        [
+                            112,
+                            64,
+                            7,
+                            127
+                        ],
+                        [
+                            120,
+                            62,
+                            7,
+                            127
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Beat 1",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            48,
+                            7,
+                            127
+                        ],
+                        [
+                            16,
+                            24,
+                            7,
+                            127
+                        ],
+                        [
+                            32,
+                            48,
+                            7,
+                            127
+                        ],
+                        [
+                            48,
+                            24,
+                            7,
+                            127
+                        ],
+                        [
+                            64,
+                            48,
+                            7,
+                            127
+                        ],
+                        [
+                            80,
+                            24,
+                            7,
+                            127
+                        ],
+                        [
+                            96,
+                            48,
+                            7,
+                            127
+                        ],
+                        [
+                            112,
+                            24,
+                            7,
+                            127
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 0,
+                    "name": "WTF",
+                    "noteSnap": 0,
+                    "notes": [
+                        [
+                            0,
+                            60,
+                            0,
+                            127
+                        ],
+                        [
+                            1,
+                            62,
+                            0,
+                            127
+                        ],
+                        [
+                            2,
+                            64,
+                            0,
+                            127
+                        ],
+                        [
+                            3,
+                            65,
+                            0,
+                            127
+                        ],
+                        [
+                            4,
+                            67,
+                            0,
+                            127
+                        ],
+                        [
+                            5,
+                            69,
+                            0,
+                            127
+                        ],
+                        [
+                            6,
+                            71,
+                            0,
+                            127
+                        ],
+                        [
+                            7,
+                            72,
+                            0,
+                            127
+                        ],
+                        [
+                            8,
+                            71,
+                            0,
+                            127
+                        ],
+                        [
+                            9,
+                            69,
+                            0,
+                            127
+                        ],
+                        [
+                            10,
+                            67,
+                            0,
+                            127
+                        ],
+                        [
+                            11,
+                            65,
+                            0,
+                            127
+                        ],
+                        [
+                            12,
+                            64,
+                            0,
+                            127
+                        ],
+                        [
+                            13,
+                            62,
+                            0,
+                            127
+                        ],
+                        [
+                            14,
+                            60,
+                            0,
+                            127
+                        ],
+                        [
+                            15,
+                            59,
+                            0,
+                            127
+                        ],
+                        [
+                            16,
+                            57,
+                            0,
+                            127
+                        ],
+                        [
+                            17,
+                            55,
+                            0,
+                            127
+                        ],
+                        [
+                            18,
+                            53,
+                            0,
+                            127
+                        ],
+                        [
+                            19,
+                            52,
+                            0,
+                            127
+                        ],
+                        [
+                            20,
+                            50,
+                            0,
+                            127
+                        ],
+                        [
+                            21,
+                            48,
+                            0,
+                            127
+                        ],
+                        [
+                            22,
+                            50,
+                            0,
+                            127
+                        ],
+                        [
+                            23,
+                            52,
+                            0,
+                            127
+                        ],
+                        [
+                            24,
+                            53,
+                            0,
+                            127
+                        ],
+                        [
+                            25,
+                            55,
+                            0,
+                            127
+                        ],
+                        [
+                            26,
+                            57,
+                            0,
+                            127
+                        ],
+                        [
+                            27,
+                            59,
+                            0,
+                            127
+                        ],
+                        [
+                            28,
+                            60,
+                            0,
+                            127
+                        ],
+                        [
+                            32,
+                            60,
+                            0,
+                            127
+                        ],
+                        [
+                            36,
+                            60,
+                            0,
+                            127
+                        ],
+                        [
+                            40,
+                            60,
+                            0,
+                            127
+                        ],
+                        [
+                            44,
+                            60,
+                            0,
+                            127
+                        ],
+                        [
+                            48,
+                            60,
+                            0,
+                            127
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 2,
+                    "name": "Verse 1 (C4)",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            60,
+                            15,
+                            127
+                        ],
+                        [
+                            16,
+                            60,
+                            15,
+                            127
+                        ],
+                        [
+                            40,
+                            60,
+                            15,
+                            127
+                        ],
+                        [
+                            64,
+                            60,
+                            15,
+                            127
+                        ],
+                        [
+                            80,
+                            60,
+                            15,
+                            127
+                        ],
+                        [
+                            104,
+                            60,
+                            15,
+                            127
+                        ],
+                        [
+                            128,
+                            64,
+                            15,
+                            127
+                        ],
+                        [
+                            144,
+                            64,
+                            15,
+                            127
+                        ],
+                        [
+                            168,
+                            64,
+                            15,
+                            127
+                        ],
+                        [
+                            192,
+                            64,
+                            15,
+                            127
+                        ],
+                        [
+                            208,
+                            64,
+                            15,
+                            127
+                        ],
+                        [
+                            232,
+                            64,
+                            15,
+                            127
+                        ],
+                        [
+                            256,
+                            67,
+                            15,
+                            127
+                        ],
+                        [
+                            272,
+                            67,
+                            15,
+                            127
+                        ],
+                        [
+                            296,
+                            67,
+                            15,
+                            127
+                        ],
+                        [
+                            320,
+                            67,
+                            15,
+                            127
+                        ],
+                        [
+                            336,
+                            67,
+                            15,
+                            127
+                        ],
+                        [
+                            360,
+                            67,
+                            15,
+                            127
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Chorus",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            48,
+                            7,
+                            127
+                        ],
+                        [
+                            8,
+                            48,
+                            7,
+                            127
+                        ],
+                        [
+                            16,
+                            48,
+                            7,
+                            127
+                        ],
+                        [
+                            24,
+                            48,
+                            7,
+                            127
+                        ],
+                        [
+                            32,
+                            52,
+                            7,
+                            127
+                        ],
+                        [
+                            40,
+                            55,
+                            7,
+                            127
+                        ],
+                        [
+                            48,
+                            53,
+                            7,
+                            127
+                        ],
+                        [
+                            56,
+                            50,
+                            7,
+                            127
+                        ],
+                        [
+                            64,
+                            48,
+                            7,
+                            127
+                        ],
+                        [
+                            72,
+                            48,
+                            7,
+                            127
+                        ],
+                        [
+                            80,
+                            48,
+                            7,
+                            127
+                        ],
+                        [
+                            88,
+                            48,
+                            7,
+                            127
+                        ],
+                        [
+                            96,
+                            52,
+                            7,
+                            127
+                        ],
+                        [
+                            104,
+                            55,
+                            7,
+                            127
+                        ],
+                        [
+                            112,
+                            53,
+                            7,
+                            127
+                        ],
+                        [
+                            120,
+                            50,
+                            7,
+                            127
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Kick Beat",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            60,
+                            7,
+                            127
+                        ],
+                        [
+                            8,
+                            60,
+                            7,
+                            127
+                        ],
+                        [
+                            16,
+                            36,
+                            7,
+                            127
+                        ],
+                        [
+                            24,
+                            36,
+                            7,
+                            127
+                        ],
+                        [
+                            32,
+                            60,
+                            7,
+                            127
+                        ],
+                        [
+                            40,
+                            60,
+                            7,
+                            127
+                        ],
+                        [
+                            48,
+                            36,
+                            7,
+                            127
+                        ],
+                        [
+                            56,
+                            36,
+                            7,
+                            127
+                        ],
+                        [
+                            64,
+                            60,
+                            7,
+                            127
+                        ],
+                        [
+                            72,
+                            60,
+                            7,
+                            127
+                        ],
+                        [
+                            80,
+                            36,
+                            7,
+                            127
+                        ],
+                        [
+                            88,
+                            36,
+                            7,
+                            127
+                        ],
+                        [
+                            96,
+                            60,
+                            7,
+                            127
+                        ],
+                        [
+                            104,
+                            60,
+                            7,
+                            127
+                        ],
+                        [
+                            112,
+                            36,
+                            7,
+                            127
+                        ],
+                        [
+                            120,
+                            36,
+                            7,
+                            127
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 2,
+                    "name": "Verse 1 (C3)",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            48,
+                            15,
+                            127
+                        ],
+                        [
+                            16,
+                            48,
+                            15,
+                            127
+                        ],
+                        [
+                            40,
+                            48,
+                            15,
+                            127
+                        ],
+                        [
+                            64,
+                            48,
+                            15,
+                            127
+                        ],
+                        [
+                            80,
+                            48,
+                            15,
+                            127
+                        ],
+                        [
+                            104,
+                            48,
+                            15,
+                            127
+                        ],
+                        [
+                            128,
+                            52,
+                            15,
+                            127
+                        ],
+                        [
+                            144,
+                            52,
+                            15,
+                            127
+                        ],
+                        [
+                            168,
+                            52,
+                            15,
+                            127
+                        ],
+                        [
+                            192,
+                            52,
+                            15,
+                            127
+                        ],
+                        [
+                            208,
+                            52,
+                            15,
+                            127
+                        ],
+                        [
+                            232,
+                            52,
+                            15,
+                            127
+                        ],
+                        [
+                            256,
+                            55,
+                            15,
+                            127
+                        ],
+                        [
+                            272,
+                            55,
+                            15,
+                            127
+                        ],
+                        [
+                            296,
+                            55,
+                            15,
+                            127
+                        ],
+                        [
+                            320,
+                            55,
+                            15,
+                            127
+                        ],
+                        [
+                            336,
+                            55,
+                            15,
+                            127
+                        ],
+                        [
+                            360,
+                            55,
+                            15,
+                            127
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 2,
+                    "name": "Verse 1 (C2)",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            36,
+                            15,
+                            127
+                        ],
+                        [
+                            16,
+                            36,
+                            15,
+                            127
+                        ],
+                        [
+                            40,
+                            36,
+                            15,
+                            127
+                        ],
+                        [
+                            64,
+                            36,
+                            15,
+                            127
+                        ],
+                        [
+                            80,
+                            36,
+                            15,
+                            127
+                        ],
+                        [
+                            104,
+                            36,
+                            15,
+                            127
+                        ],
+                        [
+                            128,
+                            40,
+                            15,
+                            127
+                        ],
+                        [
+                            144,
+                            40,
+                            15,
+                            127
+                        ],
+                        [
+                            168,
+                            40,
+                            15,
+                            127
+                        ],
+                        [
+                            192,
+                            40,
+                            15,
+                            127
+                        ],
+                        [
+                            208,
+                            40,
+                            15,
+                            127
+                        ],
+                        [
+                            232,
+                            40,
+                            15,
+                            127
+                        ],
+                        [
+                            256,
+                            43,
+                            15,
+                            127
+                        ],
+                        [
+                            272,
+                            43,
+                            15,
+                            127
+                        ],
+                        [
+                            296,
+                            43,
+                            15,
+                            127
+                        ],
+                        [
+                            320,
+                            43,
+                            15,
+                            127
+                        ],
+                        [
+                            336,
+                            43,
+                            15,
+                            127
+                        ],
+                        [
+                            360,
+                            43,
+                            15,
+                            127
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Step Down",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            72,
+                            15,
+                            127
+                        ],
+                        [
+                            16,
+                            74,
+                            15,
+                            127
+                        ],
+                        [
+                            32,
+                            69,
+                            15,
+                            127
+                        ],
+                        [
+                            48,
+                            71,
+                            15,
+                            127
+                        ],
+                        [
+                            64,
+                            65,
+                            15,
+                            127
+                        ],
+                        [
+                            80,
+                            67,
+                            15,
+                            127
+                        ],
+                        [
+                            96,
+                            62,
+                            15,
+                            127
+                        ],
+                        [
+                            112,
+                            64,
+                            15,
+                            127
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Pattern 10",
+                    "noteSnap": 3,
+                    "notes": [
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Tension Mid",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            60,
+                            31,
+                            127
+                        ],
+                        [
+                            32,
+                            60,
+                            31,
+                            127
+                        ],
+                        [
+                            64,
+                            64,
+                            31,
+                            127
+                        ],
+                        [
+                            96,
+                            64,
+                            31,
+                            127
+                        ],
+                        [
+                            128,
+                            60,
+                            31,
+                            127
+                        ],
+                        [
+                            160,
+                            60,
+                            31,
+                            127
+                        ],
+                        [
+                            192,
+                            67,
+                            31,
+                            127
+                        ],
+                        [
+                            224,
+                            67,
+                            31,
+                            127
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Tension High",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            72,
+                            31,
+                            127
+                        ],
+                        [
+                            32,
+                            72,
+                            31,
+                            127
+                        ],
+                        [
+                            64,
+                            76,
+                            31,
+                            127
+                        ],
+                        [
+                            96,
+                            76,
+                            31,
+                            127
+                        ],
+                        [
+                            128,
+                            72,
+                            31,
+                            127
+                        ],
+                        [
+                            160,
+                            72,
+                            31,
+                            127
+                        ],
+                        [
+                            192,
+                            79,
+                            31,
+                            127
+                        ],
+                        [
+                            224,
+                            79,
+                            31,
+                            127
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Tension Low",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            48,
+                            31,
+                            127
+                        ],
+                        [
+                            32,
+                            48,
+                            31,
+                            127
+                        ],
+                        [
+                            64,
+                            52,
+                            31,
+                            127
+                        ],
+                        [
+                            96,
+                            52,
+                            31,
+                            127
+                        ],
+                        [
+                            128,
+                            48,
+                            31,
+                            127
+                        ],
+                        [
+                            160,
+                            48,
+                            31,
+                            127
+                        ],
+                        [
+                            192,
+                            55,
+                            31,
+                            127
+                        ],
+                        [
+                            224,
+                            55,
+                            31,
+                            127
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Unknown",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            36,
+                            15,
+                            127
+                        ],
+                        [
+                            16,
+                            36,
+                            15,
+                            64
+                        ],
+                        [
+                            32,
+                            24,
+                            15,
+                            127
+                        ],
+                        [
+                            48,
+                            24,
+                            15,
+                            96
+                        ],
+                        [
+                            64,
+                            24,
+                            15,
+                            127
+                        ],
+                        [
+                            80,
+                            24,
+                            15,
+                            96
+                        ],
+                        [
+                            96,
+                            24,
+                            15,
+                            127
+                        ],
+                        [
+                            112,
+                            24,
+                            15,
+                            96
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Pattern 15",
+                    "noteSnap": 3,
+                    "notes": [
+                    ]
+                }
+            ],
+            "sections": [
+                [
+                    [
+                        0,
+                        0,
+                        1
+                    ],
+                    [
+                        384,
+                        3,
+                        1
+                    ],
+                    [
+                        768,
+                        10,
+                        1
+                    ]
+                ],
+                [
+                    [
+                        0,
+                        0,
+                        10
+                    ],
+                    [
+                        384,
+                        3,
+                        10
+                    ],
+                    [
+                        768,
+                        10,
+                        10
+                    ]
+                ],
+                [
+                    [
+                        0,
+                        0,
+                        9
+                    ],
+                    [
+                        384,
+                        6,
+                        9
+                    ],
+                    [
+                        768,
+                        12,
+                        9
+                    ]
+                ],
+                [
+                    [
+                        0,
+                        5,
+                        19
+                    ],
+                    [
+                        384,
+                        1,
+                        19
+                    ],
+                    [
+                        512,
+                        1,
+                        19
+                    ],
+                    [
+                        640,
+                        1,
+                        19
+                    ],
+                    [
+                        768,
+                        1,
+                        19
+                    ],
+                    [
+                        896,
+                        1,
+                        19
+                    ]
+                ]
+            ],
+            "tempo": 160
+        },
+        {
+            "name": "Dungeon",
+            "patterns": [
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Foreboding Bass",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            36,
+                            127,
+                            127
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Kick Beat",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            24,
+                            7,
+                            127
+                        ],
+                        [
+                            32,
+                            24,
+                            7,
+                            96
+                        ],
+                        [
+                            64,
+                            24,
+                            7,
+                            80
+                        ],
+                        [
+                            96,
+                            24,
+                            7,
+                            64
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Pattern 3",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            48,
+                            63,
+                            127
+                        ],
+                        [
+                            64,
+                            47,
+                            31,
+                            127
+                        ],
+                        [
+                            96,
+                            48,
+                            31,
+                            127
+                        ],
+                        [
+                            128,
+                            45,
+                            127,
+                            127
+                        ]
+                    ]
+                },
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Pattern 4",
+                    "noteSnap": 3,
+                    "notes": [
+                        [
+                            0,
+                            48,
+                            127,
+                            127
+                        ]
+                    ]
+                }
+            ],
+            "sections": [
+                [
+                ],
+                [
+                    [
+                        512,
+                        2,
+                        16
+                    ]
+                ],
+                [
+                    [
+                        0,
+                        1,
+                        19
+                    ],
+                    [
+                        128,
+                        1,
+                        19
+                    ],
+                    [
+                        256,
+                        1,
+                        19
+                    ],
+                    [
+                        384,
+                        1,
+                        19
+                    ],
+                    [
+                        512,
+                        1,
+                        19
+                    ],
+                    [
+                        640,
+                        1,
+                        19
+                    ]
+                ],
+                [
+                    [
+                        0,
+                        0,
+                        21
+                    ],
+                    [
+                        128,
+                        0,
+                        21
+                    ],
+                    [
+                        256,
+                        0,
+                        21
+                    ],
+                    [
+                        384,
+                        0,
+                        21
+                    ],
+                    [
+                        512,
+                        0,
+                        21
+                    ],
+                    [
+                        640,
+                        0,
+                        21
+                    ]
+                ]
+            ],
+            "tempo": 120
+        },
+        {
+            "name": "Overworld",
+            "patterns": [
+                {
+                    "gridSize": 5,
+                    "gridSnap": 3,
+                    "name": "Pattern 1",
+                    "noteSnap": 3,
+                    "notes": [
+                    ]
+                }
+            ],
+            "sections": [
+                [
+                ],
+                [
+                ],
+                [
+                ],
+                [
+                ]
+            ],
+            "tempo": 120
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+/.qmake.stash
+/src/88-notes-classical-keyboard-Note-names-and-MIDI-numbers.png
+*.o
+/FMStudio
+*.mp4
+Makefile
+moc_*
+*.raw
+qrc_*
+ui_*
