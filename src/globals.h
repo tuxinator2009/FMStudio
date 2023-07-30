@@ -54,6 +54,7 @@ namespace Globals
   QJsonObject patchToJson(const FMSynth::Patch *patch);
   extern QList<RecentProject> recentProjects;
   extern QList<FMSynth::Patch> patches;
+  extern QString appPath;
   extern FMProject *project;
   extern const char *patchCHeaderTemplate;
   extern bool firstTimeAudio;

@@ -44,6 +44,7 @@
 
 QList<Globals::RecentProject> Globals::recentProjects;
 QList<FMSynth::Patch> Globals::patches;
+QString Globals::appPath;
 FMProject *Globals::project;
 const char *Globals::patchCHeaderTemplate = 
   "#pragma once\n"
@@ -65,7 +66,19 @@ bool Globals::firstTimeAudio = true;
 
 void Globals::loadInstruments()
 {
+#ifdef Q_OS_MACOS
+  QDir dir(QCoreApplication::applicationDirPath());
+  while (!dir.dirName().endsWith(".app", Qt::CaseInsensitive))
+    dir.cdUp();
+  appPath = dir.absolutePath();
+  dir.cd("Contents");
+  dir.cd("Resources");
+  dir.cd("instruments");
+#else
   QDir dir(QString("%1/instruments").arg(QCoreApplication::applicationDirPath()));
+  appPath = QCoreApplication::applicationDirPath();
+#endif
+  printf("Looking for instruments in: \"%s\"\n", dir.absolutePath().toLocal8Bit().data());
   QStringList files = dir.entryList(QStringList() << "*.h", QDir::Files, QDir::Name);
   for (auto filename : files)
   {
@@ -74,6 +87,40 @@ void Globals::loadInstruments()
     file.open(QFile::ReadOnly|QFile::Text);
     patches += patchFromCHeader(CHeaderParser::parseCHeader(stream.readAll()).toObject());
     file.close();
+  }
+  if (files.size() == 0)
+  {
+    FMSynth::Patch patch;
+    patch.name[0] = 'B';
+    patch.name[1] = 'L';
+    patch.name[2] = 'A';
+    patch.name[3] = 'N';
+    patch.name[4] = 'K';
+    patch.name[5] = '\0';
+    patch.algorithm = 1;
+    patch.volume = 100;
+    patch.feedback = 0;
+    patch.glide = 0;
+    patch.attack = 0;
+    patch.decay = 0;
+    patch.sustain = 0;
+    patch.release = 0;
+    patch.lfo.speed = 0;
+    patch.lfo.attack = 0;
+    patch.lfo.pmd = 0;
+    for (int i = 0; i < 4; ++i)
+    {
+      patch.op[i].level = 0;
+      patch.op[i].pitch.fixed = false;
+      patch.op[i].pitch.coarse = 0;
+      patch.op[i].pitch.fine = 0;
+      patch.op[i].detune = 0;
+      patch.op[i].attack = 0;
+      patch.op[i].decay = 0;
+      patch.op[i].sustain = 0;
+      patch.op[i].loop = false;
+    }
+    patches += patch;
   }
 }
 

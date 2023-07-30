@@ -5,6 +5,7 @@ DESTDIR = ..
 CONFIG+=c++17
 
 DEFINES += QT_DEPRECATED_WARNINGS
+QMAKE_RPATHDIR += $ORIGIN/lib
 
 QT += core gui widgets multimedia
 RESOURCES += resources.qrc

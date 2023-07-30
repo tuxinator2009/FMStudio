@@ -79,7 +79,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
   connect(wNotes, SIGNAL(scrollKeyboard(int)), scrollArea->verticalScrollBar(), SLOT(setValue(int)));
   connect(wNotes, SIGNAL(noteDurationChanged(int)), numNoteDuration, SLOT(setValue(int)));
   connect(wNotes, SIGNAL(playbackFinished()), this, SLOT(playPattern()));
-  connect(audio, SIGNAL(notify()), this, SLOT(updateAudioPosition()));
   connect(chkAutoScrollSong, SIGNAL(toggled(bool)), wSections, SLOT(setAutoScroll(bool)));
   connect(chkAutoScrollPattern, SIGNAL(toggled(bool)), wNotes, SLOT(setAutoScroll(bool)));
   wNotes->setVirtualKeyboard(wKeyboard);
@@ -148,7 +147,7 @@ void MainWindow::on_btnOpenProject_clicked()
     else if (confirm == QMessageBox::Cancel)
       return;
   }
-  QString location = QFileDialog::getOpenFileName(this, "Open Project", QCoreApplication::applicationDirPath(), "FM Studio Project (*.fmx)");
+  QString location = QFileDialog::getOpenFileName(this, "Open Project", Globals::appPath, "FM Studio Project (*.fmx)");
   QFileInfo info(location);
   if (!location.isEmpty())
   {

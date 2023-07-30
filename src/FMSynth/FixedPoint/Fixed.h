@@ -21,7 +21,7 @@ class Fixed {
 
     public:
     
-        static constexpr Fixed Pi = Fixed(3.1415926536);
+        static const Fixed Pi;
         
         constexpr Fixed(): _value(0) {}
         
@@ -182,6 +182,9 @@ class Fixed {
         
         InternalType _value;
 };
+
+template<unsigned FractionBits>
+constexpr const Fixed<FractionBits> Fixed<FractionBits>::Pi = Fixed(3.1415926536);
 
 
 // Comparison Operators

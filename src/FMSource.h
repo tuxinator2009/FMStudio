@@ -41,7 +41,7 @@ class FMSource : public QIODevice
     void playPattern(int channel, const QList<FMSong::Note> &notes, const FMSynth::Patch &patch);
     void stopPattern(int channel);
     void noteOn(int channel, const FMSynth::Patch &patch, uint8_t note, int duration, uint8_t velocity=127);
-    bool atEnd() const;
+    bool atEnd() const override;
   public slots:
     void noteOff(int channel);
     inline uint32_t samples(int duration) {return (_tempo * (duration + 1)) / 32;}
