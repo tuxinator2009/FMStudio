@@ -12,7 +12,15 @@ LIBS+=-lm
 QT += core gui widgets multimedia
 RESOURCES += resources.qrc
 
-CONFIG += debug
+CONFIG += release
+
+win32 {
+  RC_ICONS = images/icon.ico
+}
+
+macx {
+  ICON = images/icon.icns
+}
 
 SOURCES += \
         CHeaderParser/cheaderarray.cpp \
