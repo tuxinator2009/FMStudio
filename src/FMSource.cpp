@@ -69,10 +69,8 @@ void FMSource::stopSong()
   {
     Channel &channel = _channels[i];
     for (auto voice : channel.voices)
-    {
-      voice->synth.noteOff();
-      voice->samples = 0;
-    }
+      delete voice;
+    channel.voices.clear();
     channel.notes.clear();
     channel.section = -1;
   }
@@ -91,6 +89,9 @@ void FMSource::stopPattern(int channel)
 {
   _channels[channel].notes.clear();
   noteOff(channel);
+  for (auto voice : _channels[channel].voices)
+    delete voice;
+  _channels[channel].voices.clear();
 }
 
 void FMSource::noteOn(int channel, const FMSynth::Patch &patch, uint8_t note, int duration, uint8_t velocity)
@@ -122,7 +123,7 @@ bool FMSource::atEnd() const
     Channel &channel = _channels[i];
     for (auto voice : channel.voices)
     {
-      if (!voice->synth.released())
+      if (!voice->synth.finished())
         return false;
       else if (voice->samples > 0)
         return false;
@@ -178,12 +179,12 @@ qint64 FMSource::readData(char *data, qint64 maxSize)
       }
       for (auto voice : channel.voices)
       {
-        if (!voice->synth.released())
+        if (!voice->synth.finished())
         {
           if (voice->samples > 0)
           {
             --voice->samples;
-            if (voice->samples == 0)
+            if ((voice->samples == 0) && (channel.notes.size() == 0 || _sample + samples(0) / 2 < samples(channel.notes[0].offset - 1) + channel.offset))
               voice->synth.noteOff();
           }
           if (first)

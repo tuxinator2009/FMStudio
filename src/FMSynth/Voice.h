@@ -87,6 +87,7 @@ class Voice {
         inline std::int8_t midikey() const { return _midikey; }
         
         inline bool released() const { return _master_env_gen.stage() >= EnvelopeGenerator::Stage::Release; }
+        inline bool finished() const { return _master_env_gen.stage() == EnvelopeGenerator::Stage::Idle; }
         
         // Returns pitch ratio as Q15 fixed point. interval can be from -108 to 107 semitones (+/- 9 octaves).
         static constexpr std::int32_t semitonesToRatio(std::int32_t semitones) {

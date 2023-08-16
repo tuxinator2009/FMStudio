@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/images/icon.png</normaloff>:/images/icon.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">.QFrame
 {
@@ -133,8 +137,15 @@
              </property>
              <item>
               <widget class="QToolButton" name="btnNewProject">
+               <property name="toolTip">
+                <string>New Project</string>
+               </property>
                <property name="text">
                 <string>New</string>
+               </property>
+               <property name="icon">
+                <iconset resource="resources.qrc">
+                 <normaloff>:/images/newproject.png</normaloff>:/images/newproject.png</iconset>
                </property>
                <property name="shortcut">
                 <string>Ctrl+N</string>
@@ -143,8 +154,15 @@
              </item>
              <item>
               <widget class="QToolButton" name="btnOpenProject">
+               <property name="toolTip">
+                <string>Open Project</string>
+               </property>
                <property name="text">
                 <string>Open</string>
+               </property>
+               <property name="icon">
+                <iconset resource="resources.qrc">
+                 <normaloff>:/images/openproject.png</normaloff>:/images/openproject.png</iconset>
                </property>
                <property name="shortcut">
                 <string>Ctrl+O</string>
@@ -156,8 +174,15 @@
              </item>
              <item>
               <widget class="QToolButton" name="btnSaveProject">
+               <property name="toolTip">
+                <string>Save Project</string>
+               </property>
                <property name="text">
                 <string>Save</string>
+               </property>
+               <property name="icon">
+                <iconset resource="resources.qrc">
+                 <normaloff>:/images/saveproject.png</normaloff>:/images/saveproject.png</iconset>
                </property>
                <property name="shortcut">
                 <string>Ctrl+S</string>
@@ -167,13 +192,18 @@
              <item>
               <widget class="QToolButton" name="btnExportProject">
                <property name="toolTip">
-                <string>RAW Audio Format:
+                <string>Export Project
+RAW Audio Format:
   Encoding: Unsigned 8-bit PCM
   Channels: 1
   Sample Rate: 8000hz</string>
                </property>
                <property name="text">
                 <string>Export</string>
+               </property>
+               <property name="icon">
+                <iconset resource="resources.qrc">
+                 <normaloff>:/images/exportproject.png</normaloff>:/images/exportproject.png</iconset>
                </property>
                <property name="popupMode">
                 <enum>QToolButton::InstantPopup</enum>
@@ -339,8 +369,15 @@
              </item>
              <item>
               <widget class="QToolButton" name="btnEditInstruments">
+               <property name="toolTip">
+                <string>Edit Instruments</string>
+               </property>
                <property name="text">
                 <string>...</string>
+               </property>
+               <property name="icon">
+                <iconset resource="resources.qrc">
+                 <normaloff>:/images/edit.png</normaloff>:/images/edit.png</iconset>
                </property>
               </widget>
              </item>
@@ -635,6 +672,12 @@
     </item>
     <item>
      <widget class="QWidget" name="widget_3" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_11">
        <property name="spacing">
         <number>3</number>
@@ -716,10 +759,92 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="QPushButton" name="btnNewSong">
-               <property name="text">
-                <string>New Song</string>
-               </property>
+              <widget class="QWidget" name="widget_18" native="true">
+               <layout class="QHBoxLayout" name="horizontalLayout_26">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QToolButton" name="btnNewSong">
+                  <property name="toolTip">
+                   <string>New Song</string>
+                  </property>
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/images/addsong.png</normaloff>:/images/addsong.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="btnImportSong">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="toolTip">
+                   <string>Import Song</string>
+                  </property>
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/images/importsong.png</normaloff>:/images/importsong.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="btnExportSong">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="toolTip">
+                   <string>Export Song</string>
+                  </property>
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/images/exportsong.png</normaloff>:/images/exportsong.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="btnDeleteSong">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="toolTip">
+                   <string>Delete Song</string>
+                  </property>
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/images/deletesong.png</normaloff>:/images/deletesong.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QWidget" name="widget_19" native="true"/>
+                </item>
+               </layout>
               </widget>
              </item>
              <item>
@@ -735,16 +860,6 @@
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="QPushButton" name="btnDeleteSong">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="text">
-                <string>Delete Song</string>
-               </property>
-              </widget>
-             </item>
             </layout>
            </widget>
           </item>
@@ -753,6 +868,12 @@
        </item>
        <item>
         <widget class="QWidget" name="wSong" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_15">
           <property name="spacing">
            <number>3</number>
@@ -1040,8 +1161,15 @@
                    </property>
                    <item>
                     <widget class="QToolButton" name="btnPlaySong">
+                     <property name="toolTip">
+                      <string>Play/Stop</string>
+                     </property>
                      <property name="text">
                       <string>Play</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="resources.qrc">
+                       <normaloff>:/images/play.png</normaloff>:/images/play.png</iconset>
                      </property>
                     </widget>
                    </item>
@@ -1347,10 +1475,6 @@ color: rgb(162, 159, 238);</string>
 	border-width: 0px 1px 1px 0px;
 	border-style: solid;
 	border-color: rgb(192, 192, 192);
-}
-
-QWidget
-{
 	background-color: rgb(61, 56, 70);
 	color: rgb(224, 224, 224);
 }</string>
@@ -1412,9 +1536,6 @@ QWidget
                   </property>
                   <property name="mouseTracking">
                    <bool>true</bool>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
                   </property>
                  </widget>
                 </item>
@@ -1588,10 +1709,92 @@ QWidget
               <number>0</number>
              </property>
              <item>
-              <widget class="QPushButton" name="btnNewPattern">
-               <property name="text">
-                <string>New Pattern</string>
-               </property>
+              <widget class="QWidget" name="widget_24" native="true">
+               <layout class="QHBoxLayout" name="horizontalLayout_27">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QToolButton" name="btnNewPattern">
+                  <property name="toolTip">
+                   <string>New Pattern</string>
+                  </property>
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/images/addpattern.png</normaloff>:/images/addpattern.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="btnImportPattern">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="toolTip">
+                   <string>Import Pattern</string>
+                  </property>
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/images/importpattern.png</normaloff>:/images/importpattern.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="btnExportPattern">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="toolTip">
+                   <string>Export Pattern</string>
+                  </property>
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/images/exportpattern.png</normaloff>:/images/exportpattern.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="btnDeletePattern">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="toolTip">
+                   <string>Delete Pattern</string>
+                  </property>
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/images/deletepattern.png</normaloff>:/images/deletepattern.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QWidget" name="widget_32" native="true"/>
+                </item>
+               </layout>
               </widget>
              </item>
              <item>
@@ -1601,16 +1804,6 @@ QWidget
                  <width>128</width>
                  <height>16777215</height>
                 </size>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnDeletePattern">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="text">
-                <string>Delete Pattern</string>
                </property>
               </widget>
              </item>
@@ -1640,6 +1833,12 @@ QWidget
           </property>
           <item>
            <widget class="QWidget" name="widget_25" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <layout class="QHBoxLayout" name="horizontalLayout_17">
              <property name="spacing">
               <number>3</number>
@@ -2135,7 +2334,7 @@ QWidget
                     </widget>
                    </item>
                    <item>
-                    <widget class="QSpinBox" name="numNoteDuration">
+                    <widget class="NoteSpinBox" name="numNoteDuration">
                      <property name="frame">
                       <bool>false</bool>
                      </property>
@@ -2243,6 +2442,10 @@ QWidget
                      </property>
                      <property name="text">
                       <string>Play</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="resources.qrc">
+                       <normaloff>:/images/play.png</normaloff>:/images/play.png</iconset>
                      </property>
                     </widget>
                    </item>
@@ -2438,7 +2641,7 @@ QWidget
                               <x>0</x>
                               <y>0</y>
                               <width>64</width>
-                              <height>832</height>
+                              <height>1408</height>
                              </rect>
                             </property>
                             <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -2462,13 +2665,13 @@ QWidget
                                <property name="minimumSize">
                                 <size>
                                  <width>64</width>
-                                 <height>832</height>
+                                 <height>1408</height>
                                 </size>
                                </property>
                                <property name="maximumSize">
                                 <size>
                                  <width>64</width>
-                                 <height>832</height>
+                                 <height>1408</height>
                                 </size>
                                </property>
                                <property name="styleSheet">
@@ -2512,9 +2715,6 @@ border-color: rgb(128, 128, 128);</string>
                         </property>
                         <property name="focusPolicy">
                          <enum>Qt::StrongFocus</enum>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">background-color: rgb(61, 56, 70);</string>
                         </property>
                        </widget>
                       </item>
@@ -2568,8 +2768,15 @@ border-color: rgb(128, 128, 128);</string>
    <header>songeditor.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>NoteSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>notespinbox.h</header>
+  </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>sldrVolume</sender>
@@ -2584,6 +2791,22 @@ border-color: rgb(128, 128, 128);</string>
     <hint type="destinationlabel">
      <x>1003</x>
      <y>33</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>numVolume</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sldrVolume</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>987</x>
+     <y>43</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>947</x>
+     <y>35</y>
     </hint>
    </hints>
   </connection>

@@ -211,6 +211,7 @@ void PatternEditor::leaveEvent(QEvent *event)
 {
   Q_UNUSED(event);
   ghostNoteVisible = false;
+  keyboard->setActiveKey(0);
   update();
 }
 
@@ -218,7 +219,7 @@ void PatternEditor::mousePressEvent(QMouseEvent *event)
 {
   int x = event->pos().x() + hScrollOffset;
   int y = event->pos().y() + vScrollOffset;
-  int midikey = keyboard->getMidikey(y);
+  int midikey = 108 - y / Globals::NOTE_HEIGHT;//keyboard->getMidikey(y);
   lastPos = event->pos();
   if (event->button() == Qt::LeftButton)
   {
@@ -233,6 +234,7 @@ void PatternEditor::mousePressEvent(QMouseEvent *event)
         {
           selectedNote = i;
           adjustingVelocity = true;
+          setCursor(Qt::ClosedHandCursor);
           break;
         }
       }
@@ -280,6 +282,7 @@ void PatternEditor::mousePressEvent(QMouseEvent *event)
         {
           ghostNote = pattern->notes.takeAt(selectedNote);
           movingNote = true;
+          setCursor(Qt::ClosedHandCursor);
           lastPos.setX(ghostNote.offset - (x / 4) / gridSnap * gridSnap);
           pattern->findOverlaps();
           findGhostNoteOverlaps();
@@ -288,6 +291,13 @@ void PatternEditor::mousePressEvent(QMouseEvent *event)
         }
       }
     }
+  }
+  else if (event->button() == Qt::MiddleButton) //Pan
+  {
+    setCursor(Qt::ClosedHandCursor);
+    ghostNoteVisible = false;
+    keyboard->setActiveKey(0);
+    update();
   }
   else if (event->button() == Qt::RightButton) //Delete notes
   {
@@ -310,7 +320,7 @@ void PatternEditor::mouseMoveEvent(QMouseEvent *event)
 {
   int x = event->pos().x() + hScrollOffset;
   int y = event->pos().y() + vScrollOffset;
-  int midikey = keyboard->getMidikey(y);
+  int midikey = 108 - y / Globals::NOTE_HEIGHT;//keyboard->getMidikey(y);
   if (event->buttons() == Qt::LeftButton) //Drag and/or Resize note
   {
     if (resizingNote)
@@ -322,7 +332,6 @@ void PatternEditor::mouseMoveEvent(QMouseEvent *event)
         noteDuration += noteSnap;
       while (noteDuration > 255)
         noteDuration -= noteSnap;
-      noteDuration = pattern->notes[selectedNote].duration;
       emit noteDurationChanged(noteDuration);
       pattern->notes[selectedNote].duration = noteDuration;
       pattern->findOverlaps();
@@ -344,6 +353,7 @@ void PatternEditor::mouseMoveEvent(QMouseEvent *event)
       int note;
       ghostNote.offset = (x / 4) / gridSnap * gridSnap + lastPos.x();
       ghostNote.midikey = midikey;
+      keyboard->setActiveKey(midikey);
       findGhostNoteOverlaps();
       note = noteAt(ghostNote.offset * 4, ghostNote.midikey, noteDuration * 4);
       if (note != -1)
@@ -395,6 +405,7 @@ void PatternEditor::mouseMoveEvent(QMouseEvent *event)
       update();
     }
     ghostNoteVisible = false;
+    keyboard->setActiveKey(0);
   }
   else if (event->buttons() == Qt::NoButton || movingNote) //Show note placement
   {
@@ -409,6 +420,7 @@ void PatternEditor::mouseMoveEvent(QMouseEvent *event)
       ghostNoteVisible = note == -1;
       if (ghostNote.offset + ghostNote.duration + 1 > maxDuration * 128)
         ghostNoteVisible = false;
+      keyboard->setActiveKey((ghostNoteVisible) ? midikey:0);
       if (note == -1)
       {
         setCursor(Qt::ArrowCursor);
@@ -431,7 +443,25 @@ void PatternEditor::mouseMoveEvent(QMouseEvent *event)
     }
     else
     {
+      bool foundOne = false;
+      for (int i = 0; i < pattern->notes.length(); ++i)
+      {
+        int noteX = pattern->notes[i].offset * 4;
+        int noteY = height() - pattern->notes[i].velocity;
+        if (x >= noteX && x < noteX + 4 && event->pos().y() >= noteY && event->pos().y() < noteY + 4)
+        {
+          foundOne = true;
+          break;
+        }
+        else if (x < noteX)
+          break;
+      }
+      if (foundOne)
+        setCursor(Qt::OpenHandCursor);
+      else
+        setCursor(Qt::ArrowCursor);
       ghostNoteVisible = false;
+      keyboard->setActiveKey(0);
       update();
     }
   }
@@ -473,6 +503,13 @@ void PatternEditor::paintEvent(QPaintEvent *event)
   QPainter painter;
   painter.begin(this);
   painter.fillRect(0, 0, width(), height(), QColor(61, 56, 70));
+  painter.setClipRect(0, 0, width(), height() - 128);
+  for (int i = 0; i < 88; ++i)
+  {
+    if (Globals::isWhiteKey(87 - i + 21))
+      painter.fillRect(0, i * 16 - vScrollOffset, width(), Globals::NOTE_HEIGHT, QColor(78, 72, 89));
+    painter.fillRect(0, i * 16 + 15 - vScrollOffset, width(), 1, QColor(0, 0, 0));
+  }
   for (int x = hScrollOffset / gridSize * gridSize; x < hScrollOffset + width(); x += gridSize)
   {
     if ((x / gridSize) % (512 / gridSize) == 0)
@@ -480,11 +517,7 @@ void PatternEditor::paintEvent(QPaintEvent *event)
     else
       painter.fillRect(x - hScrollOffset, 0, 1, height() - 128, QColor(0, 0, 0));
   }
-  for (int i = 0; i < 52; ++i)
-  {
-    if (i * 16 + 15 - vScrollOffset < height() - 128)
-      painter.fillRect(0, i * 16 + 15 - vScrollOffset, width(), 1, QColor(0, 0, 0));
-  }
+  painter.setClipRect(0, 0, width(), height());
   for (int y = 0; y < 128; y += 16)
     painter.fillRect(0, height() - y - 1, width(), 1, QColor(0, 0, 0));
   painter.fillRect(0, height() - 128, width(), 1, QColor(128, 128, 128));
@@ -492,17 +525,18 @@ void PatternEditor::paintEvent(QPaintEvent *event)
   for (auto note : pattern->notes)
   {
     int duration = note.duration + 1;
-    int octave = note.midikey / 12 - 1;
-    int semitone = note.midikey % 12;
+    //int octave = note.midikey / 12 - 1;
+    //int semitone = note.midikey % 12;
     int noteX = note.offset * 4 - hScrollOffset;
-    int noteY = octave * Globals::NOTE_HEIGHT * 7 + semitone * (Globals::NOTE_HEIGHT / 2);
+    int noteY = (108 - note.midikey) * Globals::NOTE_HEIGHT - vScrollOffset;
+    //int noteY = octave * Globals::NOTE_HEIGHT * 7 + semitone * (Globals::NOTE_HEIGHT / 2);
     if (noteX + duration * 4 < 0) //note is not in view
       continue;
     if (noteX >= width()) //notes are sorted by offset so all subsequent notes will also be beyond the widget's view
       break;
-    if (semitone > 4)
-      noteY += Globals::NOTE_HEIGHT / 2;
-    noteY = (56 * Globals::NOTE_HEIGHT) - noteY - vScrollOffset;
+    //if (semitone > 4)
+    //  noteY += Globals::NOTE_HEIGHT / 2;
+    //noteY = (56 * Globals::NOTE_HEIGHT) - noteY - vScrollOffset;
     painter.setClipRect(0, 0, width(), height() - 128);
     painter.fillRect(noteX, noteY, duration * 4, Globals::NOTE_HEIGHT - 1, QColor(0, 128, 0));
     painter.fillRect(noteX, noteY, duration * 4 - 1, Globals::NOTE_HEIGHT - 2, QColor(0, 255, 0));
@@ -519,17 +553,18 @@ void PatternEditor::paintEvent(QPaintEvent *event)
     for (auto note : pattern->overlaps)
     {
       int duration = note.duration + 1;
-      int octave = note.midikey / 12 - 1;
-      int semitone = note.midikey % 12;
+      //int octave = note.midikey / 12 - 1;
+      //int semitone = note.midikey % 12;
       int noteX = note.offset * 4 - hScrollOffset;
-      int noteY = octave * Globals::NOTE_HEIGHT * 7 + semitone * (Globals::NOTE_HEIGHT / 2);
+      int noteY = (108 - note.midikey) * Globals::NOTE_HEIGHT - vScrollOffset;
+      //int noteY = octave * Globals::NOTE_HEIGHT * 7 + semitone * (Globals::NOTE_HEIGHT / 2);
       if (noteX + duration * 4 < 0) //note is not in view
         continue;
       if (noteX >= width()) //notes are sorted by offset so all subsequent notes will also be beyond the widget's view
         break;
-      if (semitone > 4)
-        noteY += Globals::NOTE_HEIGHT / 2;
-      noteY = (56 * Globals::NOTE_HEIGHT) - noteY - vScrollOffset;
+      //if (semitone > 4)
+      //  noteY += Globals::NOTE_HEIGHT / 2;
+      //noteY = (56 * Globals::NOTE_HEIGHT) - noteY - vScrollOffset;
       painter.fillRect(noteX, noteY, duration * 4, Globals::NOTE_HEIGHT - 1, QColor(255, 0, 0));
     }
     painter.setOpacity(1.0);
@@ -537,13 +572,14 @@ void PatternEditor::paintEvent(QPaintEvent *event)
   if (ghostNoteVisible)
   {
     int duration = ghostNote.duration + 1;
-    int octave = ghostNote.midikey / 12 - 1;
-    int semitone = ghostNote.midikey % 12;
+    //int octave = ghostNote.midikey / 12 - 1;
+    //int semitone = ghostNote.midikey % 12;
     int noteX = ghostNote.offset * 4 - hScrollOffset;
-    int noteY = octave * Globals::NOTE_HEIGHT * 7 + semitone * (Globals::NOTE_HEIGHT / 2);
-    if (semitone > 4)
-      noteY += Globals::NOTE_HEIGHT / 2;
-    noteY = (56 * Globals::NOTE_HEIGHT) - noteY - vScrollOffset;
+    int noteY = (108 - ghostNote.midikey) * Globals::NOTE_HEIGHT - vScrollOffset;
+    //int noteY = octave * Globals::NOTE_HEIGHT * 7 + semitone * (Globals::NOTE_HEIGHT / 2);
+    //if (semitone > 4)
+    //  noteY += Globals::NOTE_HEIGHT / 2;
+    //noteY = (56 * Globals::NOTE_HEIGHT) - noteY - vScrollOffset;
     painter.setOpacity(0.5);
     painter.fillRect(noteX, noteY, duration * 4, Globals::NOTE_HEIGHT - 1, QColor(0, 128, 0));
     painter.fillRect(noteX, noteY, duration * 4 - 1, Globals::NOTE_HEIGHT - 2, QColor(0, 255, 0));
@@ -554,17 +590,18 @@ void PatternEditor::paintEvent(QPaintEvent *event)
       for (auto note : overlaps)
       {
         int duration = note.duration + 1;
-        int octave = note.midikey / 12 - 1;
-        int semitone = note.midikey % 12;
+        //int octave = note.midikey / 12 - 1;
+        //int semitone = note.midikey % 12;
         int noteX = note.offset * 4 - hScrollOffset;
-        int noteY = octave * Globals::NOTE_HEIGHT * 7 + semitone * (Globals::NOTE_HEIGHT / 2);
+        int noteY = (108 - note.midikey) * Globals::NOTE_HEIGHT - vScrollOffset;
+        //int noteY = octave * Globals::NOTE_HEIGHT * 7 + semitone * (Globals::NOTE_HEIGHT / 2);
         if (noteX + duration * 4 < 0) //note is not in view
           continue;
         if (noteX >= width()) //notes are sorted by offset so all subsequent notes will also be beyond the widget's view
           break;
-        if (semitone > 4)
-          noteY += Globals::NOTE_HEIGHT / 2;
-        noteY = (56 * Globals::NOTE_HEIGHT) - noteY - vScrollOffset;
+        //if (semitone > 4)
+        //  noteY += Globals::NOTE_HEIGHT / 2;
+        //noteY = (56 * Globals::NOTE_HEIGHT) - noteY - vScrollOffset;
         painter.fillRect(noteX, noteY, duration * 4, Globals::NOTE_HEIGHT - 1, QColor(255, 0, 0));
       }
       painter.setOpacity(1.0);
@@ -576,8 +613,8 @@ void PatternEditor::paintEvent(QPaintEvent *event)
     setPlaybackPosition(msecs * playbackTempo * 128 / 60000);
     if (playbackPosition >= pattern->duration * 512)
       emit playbackFinished();
+    painter.fillRect(playbackPosition - hScrollOffset, 0, 1, height(), QColor(0, 0, 255));
   }
-  painter.fillRect(playbackPosition - hScrollOffset, 0, 1, height(), QColor(0, 0, 255));
   painter.end();
 }
 
@@ -589,7 +626,7 @@ void PatternEditor::wheelEvent(QWheelEvent *event)
   wheelAngleDelta %= 5;
   if (vScrollOffset < 0)
     vScrollOffset = 0;
-  else if (vScrollOffset + height() - 128 > Globals::NOTE_HEIGHT * 52)
-    vScrollOffset = Globals::NOTE_HEIGHT * 52 - (height() - 128);
+  else if (vScrollOffset + height() - 128 > Globals::NOTE_HEIGHT * 88)
+    vScrollOffset = Globals::NOTE_HEIGHT * 88 - (height() - 128);
   emit scrollKeyboard(vScrollOffset);
 }

@@ -46,7 +46,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
   QMenu *menu = Globals::loadRecentProjects(this);
   Globals::loadInstruments();
-  Globals::project = new FMProject();
+  if (QFile::exists(Globals::homePath + "/backup.fmx"))
+  {
+    Globals::project = new FMProject(Globals::homePath + "/backup.fmx");
+    Globals::project->setLocation(Globals::backupProjectLocation);
+  }
+  else
+    Globals::project = new FMProject();
   song = Globals::project->getSong(0);
   ignoreEvents = true;
   setupUi(this);
@@ -87,6 +93,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
   menu->addAction(aExportCHeader);
   menu->addAction(aExportRawAudio);
   btnExportProject->setMenu(menu);
+  numVolume->setValue(Globals::maxVolume);
+  if (Globals::geometry.isValid())
+    setGeometry(Globals::geometry);
 }
 
 MainWindow::~MainWindow()
@@ -112,6 +121,8 @@ void MainWindow::on_btnNewProject_clicked()
   wNotes->setEnabled(false);
   delete Globals::project;
   Globals::project = new FMProject();
+  Globals::backupProjectLocation = "";
+  Globals::saveSettings();
   song = Globals::project->getSong(0);
   ignoreEvents = true;
   leProjectName->setText(Globals::project->getName());
@@ -156,6 +167,8 @@ void MainWindow::on_btnOpenProject_clicked()
     {
       delete Globals::project;
       Globals::project = project;
+      Globals::backupProjectLocation = location;
+      Globals::saveSettings();
       ignoreEvents = true;
       leProjectName->setText(Globals::project->getName());
       optInstrument->clear();
@@ -199,6 +212,8 @@ void MainWindow::on_btnOpenProject_triggered(QAction *action)
     Globals::project = new FMProject(location);
     if (Globals::project->isSaved())
     {
+      Globals::backupProjectLocation = location;
+      Globals::saveSettings();
       delete oldProject;
       ignoreEvents = true;
       leProjectName->setText(Globals::project->getName());
@@ -243,12 +258,15 @@ void MainWindow::on_aExportRawAudio_triggered()
     QMessageBox::critical(this, "Can't Export", "The project needs to be saved to a file before it can be exported.");
     return;
   }
+  QDir dir(info.absolutePath());
+  dir.mkdir(Globals::project->getName());
+  dir.cd(Globals::project->getName());
   setEnabled(false);
   QCoreApplication::processEvents();
   for (int i = 0; i < Globals::project->numSongs(); ++i)
   {
     FMSong *s = Globals::project->getSong(i);
-    QFile file(info.absolutePath() + "/" + Globals::project->getName() + " - " + s->getName() + ".raw");
+    QFile file(dir.filePath(s->getName() + ".raw"));
     if (!file.open(QFile::WriteOnly))
     {
       QMessageBox::critical(this, "Export Failed", QString("Failed to export %1 to %2\nReason: %3").arg(s->getName()).arg(file.fileName()).arg(file.errorString()));
@@ -294,6 +312,7 @@ void MainWindow::on_btnEditInstruments_clicked()
   patch = Globals::project->getInstrument(optInstrument->currentIndex());
   wSections->update();
   ignoreEvents = false;
+  numVolume->setValue(Globals::maxVolume);
 }
 
 void MainWindow::on_optOverlapPolicy_currentIndexChanged(int index)
@@ -332,6 +351,7 @@ void MainWindow::on_optShowKeyNames_currentIndexChanged(int index)
 void MainWindow::on_numVolume_valueChanged(int value)
 {
   audio->setVolume(QAudio::convertVolume(value / 100.0, QAudio::LogarithmicVolumeScale, QAudio::LinearVolumeScale));
+  Globals::maxVolume = value;
 }
 
 void MainWindow::on_btnNewSong_clicked()
@@ -357,7 +377,7 @@ void MainWindow::on_lstSongs_currentRowChanged(int row)
   for (int i = 0; i < song->numPatterns(); ++i)
     lstPatterns->addItem(song->getPattern(i)->name);
   ignoreEvents = false;
-  btnDeletePattern->setEnabled(lstPatterns->count() > 1);
+  btnDeletePattern->setEnabled(song->numPatterns() > 1);
   lstPatterns->setCurrentRow(0);
   length = song->getLength();
   lblSongDuration->setText(QString("%1:%2").arg(length / 60).arg(length % 60, 2, 10, QChar('0')));
@@ -379,7 +399,6 @@ void MainWindow::on_leSongName_textChanged(QString text)
 {
   if (ignoreEvents)
     return;
-  Globals::project->setName(text);
   lstSongs->currentItem()->setText(text);
   song->setName(text);
 }
@@ -399,6 +418,7 @@ void MainWindow::on_btnPlaySong_clicked()
     wSongs->setEnabled(false);
     wPatternEditor->setEnabled(false);
     btnPlaySong->setText("Stop");
+    btnPlaySong->setIcon(QIcon(":/images/stop.png"));
     playSong(true);
   }
   else
@@ -406,6 +426,7 @@ void MainWindow::on_btnPlaySong_clicked()
     wSongs->setEnabled(true);
     wPatternEditor->setEnabled(true);
     btnPlaySong->setText("Play");
+    btnPlaySong->setIcon(QIcon(":/images/play.png"));
     source->stopSong();
     audio->stop();
     wSections->setPlaybackPosition(0);
@@ -431,7 +452,7 @@ void MainWindow::on_btnNewPattern_clicked()
   lstPatterns->addItem(newPattern->name);
   lstPatterns->setCurrentRow(lstPatterns->count() - 1);
   Globals::project->setSaved(false);
-  btnDeletePattern->setEnabled(false);
+  btnDeletePattern->setEnabled(true);
 }
 
 void MainWindow::on_lstPatterns_currentRowChanged(int currentRow)
@@ -457,8 +478,7 @@ void MainWindow::on_btnDeletePattern_clicked()
     song->deletePattern(lstPatterns->currentRow());
     delete lstPatterns->takeItem(lstPatterns->currentRow());
     Globals::project->setSaved(false);
-    if (lstPatterns->count() == 1)
-      btnDeletePattern->setEnabled(false);
+    btnDeletePattern->setEnabled(song->numPatterns() > 1);
     wSections->update();
   }
 }
@@ -476,7 +496,7 @@ void MainWindow::on_btnMinusNoteDuration_clicked()
 {
   int value = numNoteDuration->value();
   int shift = 1 << optNoteSnap->currentIndex();
-  if (value - shift > 0)
+  if (value - shift >= 0)
     numNoteDuration->setValue(value - shift);
 }
 
@@ -494,6 +514,7 @@ void MainWindow::on_btnPlayPattern_clicked()
   {
     wPatterns->setEnabled(false);
     btnPlayPattern->setText("Stop");
+    btnPlayPattern->setIcon(QIcon(":/images/stop.png"));
     playPattern(true);
   }
   else
@@ -501,6 +522,7 @@ void MainWindow::on_btnPlayPattern_clicked()
     source->stopPattern(0);
     wPatterns->setEnabled(true);
     btnPlayPattern->setText("Play");
+    btnPlayPattern->setIcon(QIcon(":/images/play.png"));
     audio->stop();
     wNotes->setPlaybackPosition(0);
     wNotes->setAudioPlaying(nullptr, 0);
@@ -538,6 +560,7 @@ void MainWindow::playSong(bool force)
     wSongs->setEnabled(true);
     wPatternEditor->setEnabled(true);
     btnPlaySong->setText("Play");
+    btnPlaySong->setIcon(QIcon(":/images/play.png"));
     source->stopSong();
     wSections->setAudioPlaying(nullptr, 0);
     wSections->setPlaybackPosition(0);
@@ -560,8 +583,10 @@ void MainWindow::playPattern(bool force)
   else
   {
     audio->stop();
+    source->stopPattern(0);
     wPatterns->setEnabled(true);
     btnPlayPattern->setText("Play");
+    btnPlayPattern->setIcon(QIcon(":/images/play.png"));
     wNotes->setAudioPlaying(nullptr, 0);
     wNotes->setPlaybackPosition(0);
   }
@@ -587,6 +612,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
       return;
     }
   }
+  Globals::geometry = geometry();
+  Globals::saveSettings();
   Globals::saveRecentProjects();
+  QFile::remove(Globals::homePath + "/backup.fmx");
   event->accept();
 }

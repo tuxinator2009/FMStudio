@@ -42,9 +42,9 @@ class FMSource : public QIODevice
     void stopPattern(int channel);
     void noteOn(int channel, const FMSynth::Patch &patch, uint8_t note, int duration, uint8_t velocity=127);
     bool atEnd() const override;
+    inline uint32_t samples(int duration) {return (_tempo * (duration + 1)) / 32;}
   public slots:
     void noteOff(int channel);
-    inline uint32_t samples(int duration) {return (_tempo * (duration + 1)) / 32;}
   protected:
     qint64 readData(char *data, qint64 maxSize) override;
     qint64 writeData(const char *data, qint64 maxSize) override;

@@ -39,6 +39,7 @@ SongEditor::SongEditor(QWidget *parent) : QWidget(parent)
 {
   audio = nullptr;
   song = nullptr;
+  playbackPosition = 0;
   xOffset = 0;
   snap = 128;
   currentOffset = 0;
@@ -390,7 +391,7 @@ void SongEditor::paintEvent(QPaintEvent *event) //FIXME: render song sections
     setPlaybackPosition(msecs * playbackTempo * 32 / 60000);
     if (playbackPosition >= song->getDuration())
       emit playbackFinished();
+    painter.fillRect(playbackPosition - xOffset, 0, 1, height(), QColor(0, 0, 255));
   }
-  painter.fillRect(playbackPosition - xOffset, 0, 1, height(), QColor(0, 0, 255));
   painter.end();
 }

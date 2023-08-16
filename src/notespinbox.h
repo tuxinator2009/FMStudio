@@ -22,52 +22,34 @@
  * SOFTWARE.                                                                      *
  **********************************************************************************/
 
-#ifndef GLOBALS_H
-#define GLOBALS_H
+#ifndef NOTESPINBOX_H
+#define NOTESPINBOX_H
 
-#include "FMSynth/Patch.h"
+#include <QSpinBox>
 
-class QAudioOutput;
-class QJsonObject;
-class QMenu;
-class QObject;
-class QWidget;
-class CHeaderObject;
-class FMProject;
-
-namespace Globals
+class NoteSpinBox : public QSpinBox
 {
-  struct RecentProject
-  {
-    QString name;
-    QString location;
-    bool operator==(const RecentProject &other) const {return location == other.location;}
-  };
-  void init();
-  void loadSettings();
-  void saveSettings();
-  void loadInstruments();
-  QMenu *loadRecentProjects(QWidget *parent);
-  void saveRecentProjects();
-  void addRecentProject(QString name, QString location);
-  QAudioOutput *createAudioOutput(QWidget *parent=nullptr);
-  QString patchToCHeader(const FMSynth::Patch &patch);
-  FMSynth::Patch patchFromCHeader(const CHeaderObject &data);
-  FMSynth::Patch *patchFromJson(const QJsonObject &json);
-  QJsonObject patchToJson(const FMSynth::Patch *patch);
-  bool isWhiteKey(int midikey);
-  extern QList<RecentProject> recentProjects;
-  extern QList<FMSynth::Patch> patches;
-  extern QString appPath;
-  extern QString homePath;
-  extern QString backupProjectLocation;
-  extern FMProject *project;
-  extern QRect geometry;
-  extern int maxVolume;
-  extern bool firstTimeAudio;
-  extern const char *patchCHeaderTemplate;
-  static constexpr int NOTE_HEIGHT = 16;
-  constexpr bool whiteKey[12] = {true, false, true, true, false, true, false, true, true, false, true, false};
+  Q_OBJECT
+  public:
+    NoteSpinBox(QWidget *parent=nullptr) : QSpinBox(parent) {}
+    ~NoteSpinBox() {}
+  protected:
+    QString textFromValue(int value) const
+    {
+      int numerator = value + 1;
+      int denominator = 128;
+      int gcf = numerator;
+      while (numerator % gcf != 0 || denominator % gcf != 0)
+        --gcf;
+      return QString("%1/%2").arg(numerator / gcf).arg(denominator / gcf);
+    }
+    int valueFromText(const QString &text) const
+    {
+      int numerator = text.section('/', 0, 0).toInt();
+      int denominator = text.section('/', 1, 1).toInt();
+      int factor = 128 / denominator;
+      return numerator * factor - 1;
+    }
 };
 
-#endif //GLOBALS_H
+#endif //NOTESPINBOX_H

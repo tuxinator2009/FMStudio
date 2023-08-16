@@ -34,7 +34,7 @@ class VirtualPiano : public QWidget
   public:
     VirtualPiano(QWidget *parent=nullptr);
     ~VirtualPiano();
-    int getMidikey(int y);
+    void setActiveKey(int midikey);
   signals:
     void notePressed(int midikey);
     void noteReleased();

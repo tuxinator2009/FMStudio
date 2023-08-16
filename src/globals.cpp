@@ -44,8 +44,13 @@
 
 QList<Globals::RecentProject> Globals::recentProjects;
 QList<FMSynth::Patch> Globals::patches;
-QString Globals::appPath;
+QString Globals::appPath = "";
+QString Globals::homePath = "";
+QString Globals::backupProjectLocation = "";
 FMProject *Globals::project;
+QRect Globals::geometry;
+int Globals::maxVolume = 100;
+bool Globals::firstTimeAudio = true;
 const char *Globals::patchCHeaderTemplate = 
   "#pragma once\n"
   "\n"
@@ -62,12 +67,71 @@ const char *Globals::patchCHeaderTemplate =
   "    {.level=%41, .pitch={.fixed=%42, .coarse=%43, .fine=%44}, .detune=%45, .attack=%46, .decay=%47, .sustain=%48, .loop=%49}\n"
   "  }\n"
   "};\n";
-bool Globals::firstTimeAudio = true;
+
+void Globals::init()
+{
+  QDir dir(QDir::homePath());
+  appPath = QCoreApplication::applicationDirPath();
+  homePath = QDir::homePath() + "/.fmstudio";
+  dir.mkpath(".fmstudio");
+}
+
+void Globals::loadSettings()
+{
+  QFile file(homePath + "/settings.txt");
+  QTextStream stream(&file);
+  QStringList settings;
+  if (!file.open(QFile::ReadOnly|QFile::Text))
+  {
+    printf("Error: failed to open settings file\nReason: %s\n", file.errorString().toLocal8Bit().data());
+    return;
+  }
+  settings = stream.readAll().split('\n');
+  file.close();
+  for (auto& setting : settings)
+  {
+    QString variable, value;
+    int index = setting.indexOf('='); //split at first equals sign
+    variable = setting.mid(0, index).trimmed();
+    value = setting.mid(index + 1).trimmed();
+    if (variable == "maxVolume")
+      maxVolume = value.toInt();
+    else if (variable == "geometry.x")
+      geometry.setX(value.toInt());
+    else if (variable == "geometry.y")
+      geometry.setY(value.toInt());
+    else if (variable == "geometry.width")
+      geometry.setWidth(value.toInt());
+    else if (variable == "geometry.height")
+      geometry.setHeight(value.toInt());
+    else if (variable == "backupProjectLocation")
+      backupProjectLocation = value;
+  }
+}
+
+void Globals::saveSettings()
+{
+  QFile file(homePath + "/settings.txt");
+  QTextStream stream(&file);
+  QStringList settings;
+  if (!file.open(QFile::WriteOnly|QFile::Text))
+  {
+    printf("Error: failed to save settings file\nReason: %s\n", file.errorString().toLocal8Bit().data());
+    return;
+  }
+  stream << "maxVolume=" << maxVolume << "\n";
+  stream << "geometry.x=" << geometry.x() << "\n";
+  stream << "geometry.y=" << geometry.y() << "\n";
+  stream << "geometry.width=" << geometry.width() << "\n";
+  stream << "geometry.height=" << geometry.height() << "\n";
+  stream << "backupProjectLocation=" << backupProjectLocation << "\n";
+  file.close();
+}
 
 void Globals::loadInstruments()
 {
 #ifdef Q_OS_MACOS
-  QDir dir(QCoreApplication::applicationDirPath());
+  QDir dir(appPath);
   while (!dir.dirName().endsWith(".app", Qt::CaseInsensitive))
     dir.cdUp();
   appPath = dir.absolutePath();
@@ -76,9 +140,7 @@ void Globals::loadInstruments()
   dir.cd("instruments");
 #else
   QDir dir(QString("%1/instruments").arg(QCoreApplication::applicationDirPath()));
-  appPath = QCoreApplication::applicationDirPath();
 #endif
-  printf("Looking for instruments in: \"%s\"\n", dir.absolutePath().toLocal8Bit().data());
   QStringList files = dir.entryList(QStringList() << "*.h", QDir::Files, QDir::Name);
   for (auto filename : files)
   {
@@ -126,7 +188,7 @@ void Globals::loadInstruments()
 
 QMenu *Globals::loadRecentProjects(QWidget *parent)
 {
-  QFile file(QString("%1/.fmstudio.txt").arg(QDir::homePath()));
+  QFile file(homePath + "/recent.txt");
   QTextStream stream(&file);
   QMenu *menu = new QMenu(parent);
   if (file.open(QFile::ReadOnly | QFile::Text))
@@ -151,7 +213,7 @@ QMenu *Globals::loadRecentProjects(QWidget *parent)
 
 void Globals::saveRecentProjects()
 {
-  QFile file(QString("%1/.fmstudio.txt").arg(QDir::homePath()));
+  QFile file(homePath + "/recent.txt");
   QTextStream stream(&file);
   file.open(QFile::WriteOnly | QFile::Text);
   while (recentProjects.size() > 10)
@@ -313,4 +375,13 @@ QJsonObject Globals::patchToJson(const FMSynth::Patch *patch)
   }
   json["op"] = array;
   return json;
+}
+
+bool Globals::isWhiteKey(int midikey)
+{
+  if (midikey < 21)
+    return true;
+  if (midikey > 108)
+    return true;
+  return whiteKey[(midikey - 21) % 12];
 }

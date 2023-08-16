@@ -8,3 +8,9 @@ moc_*
 *.raw
 qrc_*
 ui_*
+/src/tools/analyze
+*.wav
+*.csv
+/src/tools/readmidi
+/src/tools/waveformAnalysis
+/src/tools/waveforms

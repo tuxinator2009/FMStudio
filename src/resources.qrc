@@ -1,5 +1,24 @@
 <RCC>
   <qresource prefix="/">
+    <file>images/close.png</file>
+    <file>images/help.png</file>
+    <file>images/open.png</file>
+    <file>images/play.png</file>
+    <file>images/stop.png</file>
+    <file>images/edit.png</file>
+    <file>images/addpattern.png</file>
+    <file>images/addsong.png</file>
+    <file>images/deletepattern.png</file>
+    <file>images/deletesong.png</file>
+    <file>images/exportpattern.png</file>
+    <file>images/exportproject.png</file>
+    <file>images/exportsong.png</file>
+    <file>images/importpattern.png</file>
+    <file>images/importsong.png</file>
+    <file>images/newproject.png</file>
+    <file>images/openproject.png</file>
+    <file>images/saveproject.png</file>
+    <file>images/icon.png</file>
     <file>images/algo1.png</file>
     <file>images/algo2.png</file>
     <file>images/algo3.png</file>

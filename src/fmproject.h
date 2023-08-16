@@ -47,12 +47,13 @@ class FMProject
     FMProject();
     FMProject(QString fileLocation);
     ~FMProject();
-    void saveProject();
+    void saveProject(QString fileLocation=QString());
     bool isSaved();
     void setSaved(bool value);
     QString getName();
     void setName(QString value);
     QString getLocation();
+    void setLocation(QString value);
     OverlapPolicy getOverlapPolicy();
     void setOverlapPolicy(OverlapPolicy value);
     bool hasOverlaps();

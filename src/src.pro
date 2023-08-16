@@ -7,8 +7,12 @@ CONFIG+=c++17
 DEFINES += QT_DEPRECATED_WARNINGS
 QMAKE_RPATHDIR += $ORIGIN/lib
 
+LIBS+=-lm
+
 QT += core gui widgets multimedia
 RESOURCES += resources.qrc
+
+CONFIG += debug
 
 SOURCES += \
         CHeaderParser/cheaderarray.cpp \
@@ -26,8 +30,11 @@ SOURCES += \
         newinstrument.cpp \
         patterneditor.cpp \
         songeditor.cpp \
+        spectrumpreview.cpp \
         undo.cpp \
-        virtualpiano.cpp
+        virtualpiano.cpp \
+        waveformanalyzer.cpp \
+        waveformpreview.cpp
 
 HEADERS += \
         CHeaderParser/cheaderarray.h \
@@ -42,10 +49,14 @@ HEADERS += \
         instrumenteditor.h \
         mainwindow.h \
         newinstrument.h \
+        notespinbox.h \
         patterneditor.h \
         songeditor.h \
+        spectrumpreview.h \
         undo.h \
-        virtualpiano.h
+        virtualpiano.h \
+        waveformanalyzer.h \
+        waveformpreview.h
 
 FORMS += \
         cheaderview.ui \

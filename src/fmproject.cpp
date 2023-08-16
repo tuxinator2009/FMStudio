@@ -40,7 +40,8 @@ FMProject::FMProject()
   location = "";
   overlapPolicy = OverlapPolicy::Forbidden;
   showKeyNames = ShowKeyNames::CNotes;
-  instruments += new FMSynth::Patch(Globals::patches[0]);
+  for (auto& patch : Globals::patches)
+    instruments += new FMSynth::Patch(patch);
   songs += new FMSong();
   saved = true;
 }
@@ -77,15 +78,19 @@ FMProject::~FMProject()
     delete song;
 }
 
-void FMProject::saveProject()
+void FMProject::saveProject(QString fileLocation)
 {
-  if (location.isEmpty())
+  QString saveLocation;
+  if (!fileLocation.isEmpty())
+    saveLocation = fileLocation;
+  else if (location.isEmpty())
   {
     location = QFileDialog::getSaveFileName(nullptr, "Save Project", location, "FM Studio Project (*.fmx)");
     if (location.isEmpty())
       return;
+    saveLocation = location;
   }
-  QFile file(location);
+  QFile file(saveLocation);
   QJsonDocument json;
   QJsonObject data;
   QJsonArray array;
@@ -117,7 +122,8 @@ void FMProject::saveProject()
   json.setObject(data);
   file.write(json.toJson());
   file.close();
-  saved = true;
+  if (fileLocation != saveLocation)
+    saved = true;
 }
 
 bool FMProject::isSaved()
@@ -128,6 +134,8 @@ bool FMProject::isSaved()
 void FMProject::setSaved(bool value)
 {
   saved = value;
+  if (!saved)
+    saveProject(Globals::homePath + "/backup.fmx");
 }
 
 QString FMProject::getName()
@@ -138,13 +146,21 @@ QString FMProject::getName()
 void FMProject::setName(QString value)
 {
   if (name != value)
+  {
     saved = false;
+    saveProject(Globals::homePath + "/backup.fmx");
+  }
   name = value;
 }
 
 QString FMProject::getLocation()
 {
   return location;
+}
+
+void FMProject::setLocation(QString value)
+{
+  location = value;
 }
 
 FMProject::OverlapPolicy FMProject::getOverlapPolicy()
@@ -188,12 +204,14 @@ void FMProject::addSong(FMSong *song)
 {
   songs += song;
   saved = false;
+  saveProject(Globals::homePath + "/backup.fmx");
 }
 
 void FMProject::deleteSong(int id)
 {
   delete songs.takeAt(id);
   saved = false;
+  saveProject(Globals::homePath + "/backup.fmx");
 }
 
 int FMProject::numSongs()
@@ -215,6 +233,7 @@ void FMProject::addInstrument(FMSynth::Patch *instrument)
 {
   instruments += instrument;
   saved = false;
+  saveProject(Globals::homePath + "/backup.fmx");
 }
 
 void FMProject::deleteInstrument(int id)
@@ -224,6 +243,7 @@ void FMProject::deleteInstrument(int id)
     song->deleteInstrument(instruments[id]);
   delete instrument;
   saved = false;
+  saveProject(Globals::homePath + "/backup.fmx");
 }
 
 int FMProject::numInstruments()

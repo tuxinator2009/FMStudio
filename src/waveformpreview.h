@@ -22,52 +22,36 @@
  * SOFTWARE.                                                                      *
  **********************************************************************************/
 
-#ifndef GLOBALS_H
-#define GLOBALS_H
+#ifndef WAVEFORMPREVIEW_H
+#define WAVEFORMPREVIEW_H
 
-#include "FMSynth/Patch.h"
+#include <QWidget>
 
-class QAudioOutput;
-class QJsonObject;
-class QMenu;
-class QObject;
-class QWidget;
-class CHeaderObject;
-class FMProject;
-
-namespace Globals
+class WaveformPreview : public QWidget
 {
-  struct RecentProject
-  {
-    QString name;
-    QString location;
-    bool operator==(const RecentProject &other) const {return location == other.location;}
-  };
-  void init();
-  void loadSettings();
-  void saveSettings();
-  void loadInstruments();
-  QMenu *loadRecentProjects(QWidget *parent);
-  void saveRecentProjects();
-  void addRecentProject(QString name, QString location);
-  QAudioOutput *createAudioOutput(QWidget *parent=nullptr);
-  QString patchToCHeader(const FMSynth::Patch &patch);
-  FMSynth::Patch patchFromCHeader(const CHeaderObject &data);
-  FMSynth::Patch *patchFromJson(const QJsonObject &json);
-  QJsonObject patchToJson(const FMSynth::Patch *patch);
-  bool isWhiteKey(int midikey);
-  extern QList<RecentProject> recentProjects;
-  extern QList<FMSynth::Patch> patches;
-  extern QString appPath;
-  extern QString homePath;
-  extern QString backupProjectLocation;
-  extern FMProject *project;
-  extern QRect geometry;
-  extern int maxVolume;
-  extern bool firstTimeAudio;
-  extern const char *patchCHeaderTemplate;
-  static constexpr int NOTE_HEIGHT = 16;
-  constexpr bool whiteKey[12] = {true, false, true, true, false, true, false, true, true, false, true, false};
+  Q_OBJECT
+  public:
+    WaveformPreview(QWidget *parent=nullptr);
+    ~WaveformPreview();
+    void setWaveformData(const uint8_t *data, int id);
+    const uint8_t *getWaveformData(int id);
+    void setShowSecondWaveform(bool value);
+  signals:
+    void rangeChanged(int min, int max);
+    void hOffsetChanged(int value);
+  protected slots:
+    void setHOffset(int value);
+    void setZoomLevel(int value);
+  private:
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void paintEvent(QPaintEvent *event);
+    QPoint lastPos;
+    int zoom;
+    int hOffset;
+    uint8_t waveform[2][8000];
+    bool showSecondWaveform;
 };
 
-#endif //GLOBALS_H
+#endif //WAVEFORMPREVIEW_H

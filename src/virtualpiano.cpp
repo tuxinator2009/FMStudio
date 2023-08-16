@@ -39,19 +39,10 @@ VirtualPiano::~VirtualPiano()
 {
 }
 
-int VirtualPiano::getMidikey(int y)
+void VirtualPiano::setActiveKey(int midikey)
 {
-  for (auto key : blackKeys)
-  {
-    if (y >= key.rect.y() && y < key.rect.y() + key.rect.height())
-      return key.midikey;
-  }
-  for (auto key : whiteKeys)
-  {
-    if (y >= key.rect.y() && y < key.rect.y() + key.rect.height())
-      return key.midikey;
-  }
-  return -1;
+  activeKey = midikey;
+  update();
 }
 
 void VirtualPiano::scrollKeyboard(QWheelEvent *event)
@@ -144,10 +135,9 @@ void VirtualPiano::paintEvent(QPaintEvent *event)
       if (whiteKey % 7 == 2)
         ++octave;
       if (width() > height()) //horizontal
-        pos = QPoint(whiteKey * 16, key.rect.bottom() - 16);
+        painter.drawText(key.rect.x(), key.rect.y(), key.rect.width(), key.rect.height(), Qt::AlignCenter | Qt::AlignBottom, QString("%1%2").arg(QChar(letter)).arg(octave));
       else //vertical
-        pos = QPoint(key.rect.right() - 16, 832 - whiteKey * 16 - 16);
-      painter.drawText(pos.x(), pos.y(), 16, 16, Qt::AlignLeft | Qt::AlignVCenter, QString("%1%2").arg(QChar(letter)).arg(octave));
+        painter.drawText(key.rect.x(), key.rect.y(), key.rect.width() - 4, key.rect.height(), Qt::AlignRight | Qt::AlignVCenter, QString("%1%2").arg(QChar(letter)).arg(octave));
     }
     ++whiteKey;
   }
@@ -180,19 +170,23 @@ void VirtualPiano::initializeKeys()
   }
   else //vertical
   {
-    int barOffset = barHeight / 2;
-    for (int i = 0; i < 52; ++i)
+    for (int i = 0; i < 88; ++i)
     {
-      Key whiteKey;
-      whiteKey.midikey = midikey++;
-      whiteKey.rect = QRect(0, height() - (i + 1) * Globals::NOTE_HEIGHT, Globals::NOTE_HEIGHT * 4, Globals::NOTE_HEIGHT);
-      whiteKeys += whiteKey;
-      if (i % 7 != 1 && i % 7 != 4 && i != 51)
+      Key key;
+      key.midikey = midikey++;
+      key.rect = QRect(0, height() - (i + 1) * Globals::NOTE_HEIGHT, Globals::NOTE_HEIGHT * 4, Globals::NOTE_HEIGHT);
+      if (Globals::isWhiteKey(key.midikey)) //white key
       {
-        Key blackKey;
-        blackKey.midikey = midikey++;
-        blackKey.rect = QRect(0, height() - (i + 1) * Globals::NOTE_HEIGHT - barOffset, Globals::NOTE_HEIGHT * 2, barHeight);
-        blackKeys += blackKey;
+        if (!Globals::isWhiteKey(key.midikey - 1)) //previous key is black key
+          key.rect.setHeight(key.rect.height() + Globals::NOTE_HEIGHT / 2);
+        if (!Globals::isWhiteKey(key.midikey + 1)) //next key is black key
+          key.rect.setY(key.rect.y() - Globals::NOTE_HEIGHT / 2);
+        whiteKeys += key;
+      }
+      else
+      {
+        key.rect.setWidth(Globals::NOTE_HEIGHT * 2);
+        blackKeys += key;
       }
     }
   }
