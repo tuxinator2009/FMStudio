@@ -130,6 +130,7 @@ void SongEditor::mouseDoubleClickEvent(QMouseEvent *event)
       //undoStep->oldInstrument = section->instrument;
       //song->getUndo()->addUndoStep(Undo::Type::ChangeInstrument, (void*)undoStep);
       section->instrument = Globals::project->getInstrument(currentInstrument);
+      song->getPattern(currentPattern)->lastInstrument = section->instrument;
       Globals::project->setSaved(false);
       update();
       break;
@@ -158,11 +159,13 @@ void SongEditor::mousePressEvent(QMouseEvent *event)
     }
     if (!movingSection)
     {
+      FMSong::Pattern *pattern = song->getPattern(currentPattern);
       FMSong::Section *section = new FMSong::Section;
       section->offset = currentOffset;
-      section->pattern = song->getPattern(currentPattern);
+      section->pattern = pattern;
       section->instrument = Globals::project->getInstrument(currentInstrument);
       song->addSection(section, currentChannel);
+      pattern->lastInstrument = section->instrument;
       Globals::project->setSaved(false);
       update();
       emit updateSongLength(song->getLength());

@@ -112,6 +112,7 @@ class FMSong
       QList<Note> notes;
       QList<Note> overlaps;
       QString name;
+      FMSynth::Patch *lastInstrument;
       int duration;
       int noteSnap;
       int gridSnap;

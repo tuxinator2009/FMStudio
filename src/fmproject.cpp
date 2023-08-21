@@ -80,7 +80,7 @@ FMProject::~FMProject()
 
 void FMProject::saveProject(QString fileLocation)
 {
-  QString saveLocation;
+  QString saveLocation = location;
   if (!fileLocation.isEmpty())
     saveLocation = fileLocation;
   else if (location.isEmpty())

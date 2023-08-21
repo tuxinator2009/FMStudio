@@ -88,7 +88,6 @@ void FMSource::playPattern(int channel, const QList<FMSong::Note> &notes, const 
 void FMSource::stopPattern(int channel)
 {
   _channels[channel].notes.clear();
-  noteOff(channel);
   for (auto voice : _channels[channel].voices)
     delete voice;
   _channels[channel].voices.clear();

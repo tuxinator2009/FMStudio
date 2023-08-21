@@ -468,6 +468,8 @@ void MainWindow::on_lstPatterns_currentRowChanged(int currentRow)
   optNoteSnap->setCurrentIndex(pattern->noteSnap);
   optGridSnap->setCurrentIndex(pattern->gridSnap);
   optGridSize->setCurrentIndex(pattern->gridSize);
+  if (pattern->lastInstrument != nullptr)
+    optInstrument->setCurrentIndex(Globals::project->indexOfInstrument(pattern->lastInstrument));
   ignoreEvents = false;
 }
 
@@ -547,6 +549,7 @@ void MainWindow::playSong(bool force)
     return;
   if (chkLoopSong->isChecked() || force)
   {
+    source->stopSong();
     source->setTempo(numSongTempo->value());
     source->playSong(song);
     wSections->setPlaybackPosition(0);
@@ -573,6 +576,8 @@ void MainWindow::playPattern(bool force)
     return;
   if (chkLoopPattern->isChecked() || force)
   {
+    pattern->lastInstrument = patch;
+    source->stopSong();
     source->setTempo(numSongTempo->value());
     source->playPattern(0, pattern->notes, *patch);
     wNotes->setPlaybackPosition(0);

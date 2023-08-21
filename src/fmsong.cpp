@@ -37,6 +37,7 @@ FMSong::FMSong()
   name = "Untitled";
   tempo = 120;
   pattern->name = "Pattern 1";
+  pattern->lastInstrument = nullptr;
   pattern->duration = 1;
   pattern->noteSnap = 5;
   pattern->gridSnap = 5;
@@ -58,6 +59,10 @@ FMSong::FMSong(QJsonObject json, const QList<FMSynth::Patch*> &instruments)
     Pattern *pattern = new Pattern;
     obj = array[i].toObject();
     pattern->name = obj["name"].toString();
+    if (obj.contains("lastInstrument"))
+      pattern->lastInstrument = instruments[obj["lastInstrument"].toInt()];
+    else 
+      pattern->lastInstrument = nullptr;
     pattern->noteSnap = obj["noteSnap"].toInt();
     pattern->gridSnap = obj["gridSnap"].toInt();
     pattern->gridSize = obj["gridSize"].toInt();
@@ -125,6 +130,8 @@ QJsonObject FMSong::toJson()
     QJsonArray notesArray;
     obj = QJsonObject();
     obj["name"] = pattern->name;
+    if (pattern->lastInstrument != nullptr)
+      obj["lastInstrument"] = Globals::project->indexOfInstrument(pattern->lastInstrument);
     obj["noteSnap"] = pattern->noteSnap;
     obj["gridSnap"] = pattern->gridSnap;
     obj["gridSize"] = pattern->gridSize;
@@ -310,6 +317,11 @@ Undo *FMSong::getUndo()
 void FMSong::deleteInstrument(FMSynth::Patch *instrument)
 {
   FMSynth::Patch *newInstrument = Globals::project->getInstrument(0);
+  for (auto pattern : patterns)
+  {
+    if (pattern->lastInstrument == instrument)
+      pattern->lastInstrument = nullptr;
+  }
   for (int channel = 0; channel < 4; ++channel)
   {
     for (auto section : sections[channel])

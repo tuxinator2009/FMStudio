@@ -198,8 +198,11 @@ QMenu *Globals::loadRecentProjects(QWidget *parent)
       RecentProject project;
       project.name = stream.readLine();
       project.location = stream.readLine();
-      recentProjects += project;
-      menu->addAction(project.name)->setData(project.location);
+      if (QFile::exists(project.location))
+      {
+        recentProjects += project;
+        menu->addAction(project.name)->setData(project.location);
+      }
     }
   }
   file.close();
